@@ -60,14 +60,14 @@ $app->singleton(
 */
 
 $app->middleware([
-    //App\Http\Middleware\ExampleMiddleware::class,
+    App\Http\Middleware\Authenticate::class,
     'locale' => App\Http\Middleware\ChangeLocale::class,
-    'Vluzrmos\LumenCors\CorsMiddleware'
+    'Vluzrmos\LumenCors\CorsMiddleware',
+    'parseJWT' => App\Http\Middleware\ParseMiddleware::class,
 ]);
 
 $app->routeMiddleware([
-    //'auth' => App\Http\Middleware\Authenticate::class,
-     'jwt-auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+     'auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
 ]);
 
 /*
